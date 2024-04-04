@@ -4,8 +4,13 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array = {10, 2, 10, 3, 1, 2};
+        int[] array = new int[10000];
+
+        for (int i = 0; i < array.length; i++) {
+            array[i] = ((int) (Math.random() * 10001));
+        }
         System.out.println(Arrays.toString(array));
+        long c = System.currentTimeMillis();
         for (int left = 0; left < array.length; left++) {
             int minInd = left;
             for (int i = left; i < array.length; i++) {
@@ -16,10 +21,18 @@ public class Main {
            swap(array, left, minInd);
         }
         System.out.println(Arrays.toString(array));
+        long m = System.currentTimeMillis();
+        long b=m-c;
+        System.out.println("Time: " + b);
 
 
-        int[] array2 = {10, 2, 10, 3, 2, 5};
+        int[] array2= new int[10000];
+
+        for (int i = 0; i < array2.length; i++) {
+            array2[i] = ((int) (Math.random() * 10001));
+        }
         System.out.println(Arrays.toString(array2));
+        long time2 = System.currentTimeMillis();
         boolean needIteration = true;
         while (needIteration) {
             needIteration = false;
@@ -31,9 +44,17 @@ public class Main {
             }
         }
         System.out.println(Arrays.toString(array2));
+        long time3 = System.currentTimeMillis();
+        long time4 = time3-time2;
+        System.out.println("Time: " + time4);
 
-        int[] array3 = {10, 2, 10, 1, 2, 5};
+        int[] array3= new int[10000];
+
+        for (int i = 0; i < array3.length; i++) {
+            array3[i] = ((int) (Math.random() * 10001));
+        }
         System.out.println(Arrays.toString(array3));
+        long time5 = System.currentTimeMillis();
         for (int left = 1; left < array3.length; left++) {
             int value = array3[left];
             int i = left - 1;
@@ -47,10 +68,18 @@ public class Main {
             array3[i + 1] = value;
         }
         System.out.println(Arrays.toString(array3));
+        long time6 = System.currentTimeMillis();
+        long time7 = time6-time5;
+        System.out.println("Time: " + time7);
 
-        int[] a = {10, 2, 10, 3, 1, 2, 5};
+        int[] a= new int[10000];
+
+        for (int i = 0; i < a.length; i++) {
+            a[i] = ((int) (Math.random() * 10001));
+        }
         int j;
         System.out.println(Arrays.toString(a));
+        long time8 = System.currentTimeMillis();
 
         for (int left = 1; left < a.length; left++) {
             int key = a[left];
@@ -70,6 +99,10 @@ public class Main {
                 a[leftIndex] = key;
             }}
         System.out.println(Arrays.toString(a));
+        long time9 = System.currentTimeMillis();
+        long time10 = time9-time8;
+        System.out.println("Time: " + time10);
+
 
         }
 
