@@ -1,114 +1,108 @@
 import java.util.Arrays;
-import java.util.Stack;
+import java.util.Random;
 
-
-public class Main {
+public class Main1 {
     public static void main(String[] args) {
-        int[] array = new int[10000];
+//Сортування обміном
+//        System.out.println("Сортування обміном");
+//        int[] array = {8,6,1,4,2,9,3,5,7};
+//        System.out.println(Arrays.toString(array));
+//        boolean needIteration = true;
+//        while (needIteration){
+//            needIteration = false;
+//            for (int i = 1; i < array.length; i++){
+//                if (array[i] < array[i - 1]){
+//                    swap(array,i,i-1);
+//                    needIteration = true;
+//                }
+//            }
+//        }
+//        System.out.println(Arrays.toString(array));
 
-        for (int i = 0; i < array.length; i++) {
-            array[i] = ((int) (Math.random() * 10001));
-        }
-        System.out.println(Arrays.toString(array));
-        long c = System.currentTimeMillis();
-        for (int left = 0; left < array.length; left++) {
-            int minInd = left;
-            for (int i = left; i < array.length; i++) {
-                if (array[i] < array[minInd]) {
-                    minInd = i;
-               }
-           }
-           swap(array, left, minInd);
-        }
-        System.out.println(Arrays.toString(array));
-        long m = System.currentTimeMillis();
-        long b=m-c;
-        System.out.println("Time: " + b);
+//Сортування вибором
+//        System.out.println("Сортування вибором");
+//        int[] array1 = {10, 2, 10, 3, 1, 2, 5};
+//        System.out.println(Arrays.toString(array1));
+//        for (int left = 0; left < array1.length; left++) {
+//            int minInd = left;
+//            for (int i = left; i < array1.length; i++) {
+//                if (array1[i] < array1[minInd]) {
+//                    minInd = i;
+//                }
+//            }
+//            swap(array1, left, minInd);
+//        }
+//        System.out.println(Arrays.toString(array1));
 
+//Сортування вставками з лінійним пошуком
+//        System.out.println("Сортування вставками з лінійним пошуком");
+//        int[] array2 = {10, 2, 10, 3, 1, 2, 5};
+//        System.out.println(Arrays.toString(array2));
+//        for (int left = 1; left < array2.length; left++) {
+//            int value = array2[left];
+//            int i = left - 1;
+//            for (; i >= 0; i--) {
+//                if (value < array2[i]) {
+//                    array2[i + 1] = array2[i];
+//                } else {
+//                    break;
+//                }
+//            }
+//            array2[i + 1] = value;
+//        }
+//        System.out.println(Arrays.toString(array2));
 
-        int[] array2= new int[10000];
+////Сортування вставками з бінарним пошуком
+//        System.out.println("Сортування вставками з бінарним пошуком"); //найшвидший алгоритм
+//        int[] array3 = {10, 2, 10, 3, 1, 2, 5};
+//        for (int left = 1; left < array3.length; left++) {
+//            int key = array3[left];
+//            if (array3[left - 1] > array3[left]) {
+//                int leftIndex = 0;
+//                int rightIndex = left - 1;
+//                int ser;
+//                do {
+//                    ser = (leftIndex + rightIndex) / 2;
+//                    if (array3[ser] < key) {
+//                        leftIndex = ser + 1;
+//                    } else {
+//                        rightIndex = ser;
+//                    }
+//                } while (leftIndex < rightIndex);
+//                for (int j = left - 1; j >= leftIndex; j--)
+//                    array3[j + 1] = array3[j];
+//                array3[leftIndex] = key;
+//            }
+//        }
+//        System.out.println(Arrays.toString(array3));
+//    }
+//}
+// Сортування з рандомного елемента
+//        int[] array4 = {10, 2, 10, 3, 1, 2, 5};
+//        System.out.println("Сортування з рандомного елемента");
+//        System.out.println(Arrays.toString(array4));
+//
+//        Random random = new Random();
+//        int startIndex = random.nextInt(array4.length);
+//
+//        sortFromIndex(array4, startIndex);
+//
+//        System.out.println("Масив після сортування з позиції " + startIndex + ":");
+//        System.out.println(Arrays.toString(array4));
+//
+//    } public static void sortFromIndex(int[] array, int startIndex) {
+//        for (int i = 0; i < array.length - 1; i++) {
+//            for (int j = i + 1; j < array.length; j++) {
+//                if (array[i] > array[j]) {
+//                    int temp = array[i];
+//                    array[i] = array[j];
+//                    array[j] = temp;
+//                }
+//            }
+//        }
 
-        for (int i = 0; i < array2.length; i++) {
-            array2[i] = ((int) (Math.random() * 10001));
-        }
-        System.out.println(Arrays.toString(array2));
-        long time2 = System.currentTimeMillis();
-        boolean needIteration = true;
-        while (needIteration) {
-            needIteration = false;
-            for (int i = 1; i < array2.length; i++) {
-                if (array2[i] < array2[i - 1]) {
-                    swap(array2, i, i-1);
-                    needIteration = true;
-                }
-            }
-        }
-        System.out.println(Arrays.toString(array2));
-        long time3 = System.currentTimeMillis();
-        long time4 = time3-time2;
-        System.out.println("Time: " + time4);
-
-        int[] array3= new int[10000];
-
-        for (int i = 0; i < array3.length; i++) {
-            array3[i] = ((int) (Math.random() * 10001));
-        }
-        System.out.println(Arrays.toString(array3));
-        long time5 = System.currentTimeMillis();
-        for (int left = 1; left < array3.length; left++) {
-            int value = array3[left];
-            int i = left - 1;
-            for (; i >= 0; i--) {
-                if (value < array3[i]) {
-                    array3[i + 1] = array3[i];
-                } else {
-                    break;
-                }
-            }
-            array3[i + 1] = value;
-        }
-        System.out.println(Arrays.toString(array3));
-        long time6 = System.currentTimeMillis();
-        long time7 = time6-time5;
-        System.out.println("Time: " + time7);
-
-        int[] a= new int[10000];
-
-        for (int i = 0; i < a.length; i++) {
-            a[i] = ((int) (Math.random() * 10001));
-        }
-        int j;
-        System.out.println(Arrays.toString(a));
-        long time8 = System.currentTimeMillis();
-
-        for (int left = 1; left < a.length; left++) {
-            int key = a[left];
-            if (a[left-1]>a[left]) {
-                int leftIndex =0;
-                int rightIndex=left-1;
-                do{
-                    int ser= (leftIndex + rightIndex)/2;
-                    if(a[ser] < key) {
-                        leftIndex =ser +1;
-                    } else {
-                        rightIndex = ser;
-                    }
-                } while(leftIndex < rightIndex);
-                for (j=left-1; j>=leftIndex; j--)
-                    a[j+1]=a[j];
-                a[leftIndex] = key;
-            }}
-        System.out.println(Arrays.toString(a));
-        long time9 = System.currentTimeMillis();
-        long time10 = time9-time8;
-        System.out.println("Time: " + time10);
-
-
-        }
-
-    static void swap(int[] array, int ind1, int ind2 ) {
-        int tmp = array[ind1];
-        array[ind1] = array[ind2];
-        array[ind2] = tmp;
-    }
-}
+//    public static void swap(int[] array, int ind1, int ind2){
+//        int tmp = array[ind1];
+//        array[ind1] = array[ind2];
+//        array[ind2] = tmp;
+//    }
